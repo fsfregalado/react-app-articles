@@ -3,7 +3,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchArticle } from "../../actions";
-import {withRouter} from "react-router-dom";
 
 const mapStateToProps = ({articles: {article, loading, error}}) => {
     return {article, loading, error};   
@@ -68,4 +67,4 @@ class Article extends Component{
 
 
 
-export default  withRouter(connect(mapStateToProps, mapDispatchToProps)(Article));
+export default connect(mapStateToProps, mapDispatchToProps)(Article);
