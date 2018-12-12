@@ -20,11 +20,6 @@ const mapStateToProps = state => {
 };
 
 class ConnectedList extends Component{
-    constructor(){
-        super();
-    }
-
-
     componentDidMount()
     {
         // chamada inicial para ir buscar os artigos

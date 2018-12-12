@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Redirect } from 'react-router'
 import {fetchToken, fetchUserSuccess} from "../../actions/index"
 import store from "../../store";
 import {AUTH_USER_ENDPOINT} from "../../constants/services";

@@ -10,17 +10,13 @@ const mapStateToProps = state => {
 
 
 class ConnectedUserProfile extends Component {
-    constructor(match){
-        super(match);
-    }
-
     render(){
         var userLogged = "";
 
         if(this.props.user){
             userLogged = (
                 <div className="tile is-child box notification is-primary">
-                    <p className="title">User profile 👤</p>
+                    <p className="title">User profile <span role="img" aria-label="Person">👤</span></p>
                     <strong><label>Name: </label></strong>
                     {this.props.user.name}
                     <br/>
@@ -31,8 +27,8 @@ class ConnectedUserProfile extends Component {
         }else{
             userLogged = (
                 <div className="tile is-child box notification is-primary">
-                    <p className="title">User profile 👤</p>
-                    <p>⚠️ No user logged! Please <a href={AUTH_ENDPOINT}>login</a>  ⚠️</p>
+                    <p className="title">User profile <span role="img" aria-label="Person 2">👤</span></p>
+                    <p><span role="img" aria-label="warning">⚠️</span> No user logged! Please <a href={AUTH_ENDPOINT}>login</a>  <span role="img" aria-label="warning 2">⚠️</span></p>
                 </div>
             )
         }

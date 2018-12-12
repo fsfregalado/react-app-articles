@@ -4,7 +4,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchArticle } from "../../actions";
 import {withRouter} from "react-router-dom";
-import {AUTH_ENDPOINT} from "../../constants/services";
 
 const mapStateToProps = ({articles: {article, loading, error}}) => {
     return {article, loading, error};   
@@ -46,7 +45,7 @@ class Article extends Component{
                     <br/>
                     <figure className="media-left">
                         <p className="image" style={{width: "50%"}}>
-                            <img src={article.image}/>
+                            <img alt="articles" src={article.image}/>
                         </p>
                     </figure>
                 </div>
