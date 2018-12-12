@@ -1,0 +1,10 @@
+.login > .tile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+}
