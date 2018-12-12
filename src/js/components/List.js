@@ -44,7 +44,6 @@ class ConnectedList extends Component{
             if(articles.length <= 1){
                 content = (<p>Sorry, no articles found...</p>)
             }else{
-                console.log(articles.length);
                 content = (
                     <ul className="list-group list-group-flush">
                         {articles.map((el, index) => (

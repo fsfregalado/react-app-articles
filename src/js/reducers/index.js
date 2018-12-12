@@ -55,8 +55,6 @@ const rootReducer = (state = initialState, action) => {
             return { ...state, token: action.payload };
 
         case USER_FETCH_SUCCEEDED:
-              console.log('chegou o user', action.payload);
-            //console.log('user: ', action.payload);
             return { ...state, user: action.payload };
 
         default:

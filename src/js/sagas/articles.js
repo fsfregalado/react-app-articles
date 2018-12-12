@@ -65,7 +65,6 @@ function* fetchArticle ({type, payload}){
 
 function* fetchArticlesSearch ({type, payload}){
     try{
-        console.log("chegou aqui 2", payload);
         yield put({type: LOADING});
         const articles = yield call(fetchArtSearch, payload);
         if(articles.error){

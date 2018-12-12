@@ -25,7 +25,6 @@ class ConnectedList extends Component{
 
     componentDidMount()
     {
-        console.log("hello");
         // chamada inicial para ir buscar os users
         //meter verificação de ver se já tem users
         if(!this.props.articles.users || !this.props.articles.users.length > 0 ){
@@ -35,7 +34,6 @@ class ConnectedList extends Component{
 
     render()
     {
-        console.log(this.props.articles);
         const users = this.props.articles.users;
         const loading = this.props.articles.loading;
 

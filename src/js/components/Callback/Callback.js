@@ -30,17 +30,15 @@ class ConnectedCallback extends Component{
     {
 
 
-       /* if(!this.props.token.length > 0)
+       if(!this.props.token.length > 0)
         {
             // obter o code a partir do URL
             let code = this.props.location.search.substr(6);
 
             // invocar o pedido para pedir o novo token a partir do code obtido
             this.props.fetchToken(code);
-        }*/
+        }
 
-        let code = this.props.location.search.substr(6);
-        this.props.fetchToken(code);
         // verificar alterações à store
         store.subscribe(this.checkToken);
     }
