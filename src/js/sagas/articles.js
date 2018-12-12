@@ -27,7 +27,7 @@ async function fetchArt(id){
 }
 
 async function fetchArtSearch(input) {
-    let searchData = await fetch(`${ENDPOINT_ARTICLE}/?search=${input}`);
+    let searchData = await fetch(`${ENDPOINT_ARTICLE}?search=${input}`);
     searchData = await searchData.json();
     return searchData;
 }

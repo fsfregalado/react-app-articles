@@ -41,16 +41,21 @@ class ConnectedList extends Component{
                 <p>Loading...</p>
             )
         }else{
-            content = (
-                <ul className="list-group list-group-flush">
-                    {articles.map((el, index) => (
-                        // para cada item dentro da array articles, criar um título e um botão delete
-                        <li className="list-group-item" key={index}>
-                            <Link to={"/article/"+el.id}>{el.title}</Link>
-                        </li>
-                    ))}
-                </ul>
-            )
+            if(articles.length <= 1){
+                content = (<p>Sorry, no articles found...</p>)
+            }else{
+                console.log(articles.length);
+                content = (
+                    <ul className="list-group list-group-flush">
+                        {articles.map((el, index) => (
+                            // para cada item dentro da array articles, criar um título e um botão delete
+                            <li className="list-group-item" key={index}>
+                                <Link to={"/article/"+el.id}>{el.title}</Link>
+                            </li>
+                        ))}
+                    </ul>
+                )
+            }
         }
 
         return (
