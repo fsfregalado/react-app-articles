@@ -1,8 +1,13 @@
 // src/js/components/Form.js
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import uuidv1 from "uuid";
 import { addArticle } from "../actions/index";
+
+const mapStateToProps = state => {
+    return{
+        token: state.articles.token
+    }
+};
 
 const mapDispatchToProps = dispatch => {
     return {
@@ -14,7 +19,8 @@ class ConnectedForm extends Component {
     constructor() {
         super();
         this.state = {
-            title: ""
+            title: "",
+            description: ""
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -26,14 +32,13 @@ class ConnectedForm extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        const { title } = this.state;
-        const id = uuidv1();
-        this.props.addArticle({ title, id });
-        this.setState({ title: "" });
+        const { title, description } = this.state;
+        this.props.addArticle({ title, description, token: this.props.token});
+        this.setState({ title: "", description: "" });
     }
 
     render() {
-        const { title } = this.state;
+        const { title, description } = this.state;
         return (
             <form onSubmit={this.handleSubmit}>
                 <div className="field">
@@ -45,6 +50,14 @@ class ConnectedForm extends Component {
                         value={title}
                         onChange={this.handleChange}
                     />
+                    <label className="label has-text-white">Descrição</label>
+                    <input
+                        type="text"
+                        className="input"
+                        id="description"
+                        value={description}
+                        onChange={this.handleChange}
+                    />
                 </div>
                 <button type="submit" className="button is-danger is-inverted">
                     Create
@@ -53,6 +66,6 @@ class ConnectedForm extends Component {
         );
     }
 }
-const Form = connect(null, mapDispatchToProps)(ConnectedForm);
+const Form = connect(mapStateToProps, mapDispatchToProps)(ConnectedForm);
 
 export default Form;

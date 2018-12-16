@@ -21,7 +21,7 @@ class ConnectedNav extends Component {
             loginBtn = (
                 <div className="nav__rgt">
                     <div className="tabs">
-                        <NavLink to="/userprofile">{this.props.user.name}</NavLink>
+                        <NavLink to={`/user/${this.props.user.id}`}>{this.props.user.name}</NavLink>
                     </div>
                 </div>
             )

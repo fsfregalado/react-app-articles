@@ -3,6 +3,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import {fetchUsers} from "../../actions/index";
+import { Link } from "react-router-dom";
 
 const mapDispatchToProps = dispatch => {
     // define as actions a executar quando existirem alterações locais que requerem atualização de state
@@ -49,7 +50,7 @@ class ConnectedList extends Component{
                     {users.map((el, index) => (
                         // para cada item dentro da array articles, criar um título e um botão delete
                         <li className="list-group-item" key={index}>
-                            {el.name}
+                            <Link to={`/user/${el.id}`}>{el.name}</Link>
                         </li>
                     ))}
                 </ul>

@@ -20,15 +20,6 @@ const Home = () => (
                     </div>
                 </div>
             </div>
-            <div className="tile is-child">
-                <div className="tile is-parent">
-                    <div className="tile is-child box notification is-danger">
-                        <p className="title">Add a new article</p>
-                        <Form />
-                        <p></p>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 );
