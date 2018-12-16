@@ -1,9 +1,7 @@
 // src/js/reducers/index.js
 
 import {
-    ADD_ARTICLE,
     ARTICLES_FETCH_SUCCEEDED,
-    DELETE_ARTICLE,
     USERS_FETCH_SUCCEEDED,
     ARTICLE_FETCH_SUCCEEDED,
     ARTICLE_FETCH_ERROR,
@@ -40,10 +38,10 @@ const rootReducer = (state = initialState, action) => {
         case ARTICLE_DELETE_SUCCEEDED:
             if(state.author && state.author.articles.length > 0)
             {
-                return {...state, articles: [...state.articles.filter((x) => x.id !== action.payload)], author: {...state.author, articles: [...state.author.articles.filter((x) => x.id !== action.payload)]}};
+                return {...state, articles: [...state.articles.filter((x) => x.id !== action.payload.id)], author: {...state.author, articles: [...state.author.articles.filter((x) => x.id !== action.payload.id)]}};
             }
             else{
-                return {...state, articles: [...state.articles.filter((x) => x.id !== action.payload)]};
+                return {...state, articles: [...state.articles.filter((x) => x.id !== action.payload.id)]};
             }
 
         case ARTICLES_FETCH_SUCCEEDED:

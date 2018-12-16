@@ -1,17 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import axios from "axios";
-import {AUTH_ENDPOINT} from "../../constants/services";
 import {fetchAuthor, deleteArticle} from "../../actions";
 import {Link} from "react-router-dom";
 import Form from '../Form';
 import withAuth from "../../hocs/auth";
-import SearchBar from "../SearchBar/SearchBar";
-import List from "../List";
 
 const mapStateToProps = state => {
     return {
         author: state.articles.author,
+        token: state.articles.token
     };
 };
 
@@ -29,7 +26,7 @@ class UserProfile extends Component {
     }
 
     deleteArticle = (id) => {
-       this.props.deleteArticle(id);
+       this.props.deleteArticle({id, token: this.props.token});
     };
 
     render() {
@@ -44,7 +41,7 @@ class UserProfile extends Component {
                         <div className="tile is-vertical is-8">
                             <div className="tile">
                                 <div className="tile is-parent is-vertical">
-                                    <div className="tile is-child box notification is-primary">
+                                    <div className="tile is-child box notification is-info">
                                         <p className="title">User profile <span role="img" aria-label="Person">👤</span></p>
                                         <strong><label>Name: </label></strong>
                                         {this.props.author.name}
@@ -69,15 +66,16 @@ class UserProfile extends Component {
                 <div className="tile is-ancestor">
                         <div className="tile is-8">
                             <div className="tile is-parent is-vertical">
-                                <div className="tile is-child box notification is-primary">
+                                <div className="tile is-child box notification is-warning">
                                     <p className="title">Articles from {this.props.author.name} 📖</p>
                                     <ul className="list-group list-group-flush">
                                         {this.props.author.articles.map((el, index) => (
                                             // para cada item dentro da array articles, criar um título e um botão delete
-                                            <li className="list-group-item" key={index}>
+                                            <li className="list-group-item level" style={{marginBottom: '2px'}} key={index}>
                                                 <Link to={"/article/"+el.id}>{el.title}</Link>
                                                 {this.props.isAuth() && this.props.user().id  == this.props.match.params.id &&
-                                                <button onClick={this.deleteArticle.bind(this, el.id)}>delete</button>}
+                                                <a onClick={this.deleteArticle.bind(this, el.id)} className="level-right" style={{color: 'black', textDecoration: 'none'}}>delete</a>
+                                                }
                                             </li>
                                         ))}
                                     </ul>

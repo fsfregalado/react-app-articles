@@ -38,11 +38,12 @@ async function fetchArtSearch(input) {
 }
 
 async function removeArticle(id){
-    await axios.delete(`${ENDPOINT_ARTICLE}/${id}`);
+    console.log(id);
+    await axios.delete(`${ENDPOINT_ARTICLE}/${id.id}`, {headers: { 'Accept': 'application/json',
+            'Authorization': 'Bearer ' + id.token.access_token}});
 }
 
 async function postArticle(article) {
-    console.log(article);
     const result = await axios.post(ENDPOINT_ARTICLE, article, {headers: { 'Accept': 'application/json',
         'Authorization': 'Bearer ' + article.token.access_token}});
     return result.data;
