@@ -1,5 +1,3 @@
-export const ENDPOINT_ARTICLE = 'http://apiv2.test/api/article';
-export const ENDPOINT_USER = 'http://apiv2.test/api/user';
 export const ENDPOINT = 'http://apiv2.test/api';
 
 export const CLIENT_ID = "3";

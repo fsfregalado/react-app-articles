@@ -68,6 +68,7 @@ class UserProfile extends Component {
                             <div className="tile is-parent is-vertical">
                                 <div className="tile is-child box notification is-warning">
                                     <p className="title">Articles from {this.props.author.name} 📖</p>
+                                    {this.props.author.articles.length < 1 && <p>Sorry, but this author doesn't have articles 😔</p>}
                                     <ul className="list-group list-group-flush">
                                         {this.props.author.articles.map((el, index) => (
                                             // para cada item dentro da array articles, criar um título e um botão delete

@@ -1,9 +1,9 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
 import { FETCH_USERS, USERS_FETCH_SUCCEEDED, USERS_FETCH_ERROR} from '../constants/action-types'
-import {ENDPOINT_USER} from "../constants/services";
+import {ENDPOINT} from "../constants/services";
 
 function fetchAll() {
-    return fetch(ENDPOINT_USER).then(response => response.json(), );
+    return fetch(`${ENDPOINT}/user`).then(response => response.json(), );
 }
 
 /*async function fetchAll() {

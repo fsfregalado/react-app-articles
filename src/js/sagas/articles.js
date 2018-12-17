@@ -14,37 +14,37 @@ import {
     ARTICLE_DELETE_SUCCEEDED, ARTICLE_DELETE_ERROR, ARTICLE_ADD_SUCCEEDED, ARTICLE_ADD_ERROR, ADD_ARTICLE
 } from '../constants/action-types'
 import axios from 'axios';
-import {ENDPOINT_ARTICLE} from "../constants/services";
+import {ENDPOINT} from "../constants/services";
 
 /*function fetchAll() {
     return fetch(ENDPOINT).then(response => response.json(), );
 }*/
 
 async function fetchAll() {
-    const data = await fetch(ENDPOINT_ARTICLE);
+    const data = await fetch(`${ENDPOINT}/article`);
     const jsonData = await data.json();
     return jsonData;
 }
 async function fetchArt(id){
-    let  articleData = await fetch(`${ENDPOINT_ARTICLE}/${id}`);
+    let  articleData = await fetch(`${ENDPOINT}/article/${id}`);
     articleData = await articleData.json();
     return articleData;
 }
 
 async function fetchArtSearch(input) {
-    let searchData = await fetch(`${ENDPOINT_ARTICLE}?search=${input}`);
+    let searchData = await fetch(`${ENDPOINT}/article?search=${input}`);
     searchData = await searchData.json();
     return searchData;
 }
 
 async function removeArticle(id){
     console.log(id);
-    await axios.delete(`${ENDPOINT_ARTICLE}/${id.id}`, {headers: { 'Accept': 'application/json',
+    await axios.delete(`${ENDPOINT}/article/${id.id}`, {headers: { 'Accept': 'application/json',
             'Authorization': 'Bearer ' + id.token.access_token}});
 }
 
 async function postArticle(article) {
-    const result = await axios.post(ENDPOINT_ARTICLE, article, {headers: { 'Accept': 'application/json',
+    const result = await axios.post(`${ENDPOINT}/article`, article, {headers: { 'Accept': 'application/json',
         'Authorization': 'Bearer ' + article.token.access_token}});
     return result.data;
 }
