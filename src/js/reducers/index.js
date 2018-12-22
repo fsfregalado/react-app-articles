@@ -25,10 +25,6 @@ const initialState = {
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {
         case ARTICLE_ADD_SUCCEEDED:
-            console.log("payload", action.payload);
-            console.log("author", state.author.id);
-            console.log("action", action.payload.user_id);
-
             if(state.author.id == action.payload.user_id){
                 return { ...state, articles: [action.payload, ...state.articles], author: {...state.author, articles: [action.payload, ...state.author.articles]} };
             }else{
